@@ -1,0 +1,32 @@
+
+#main{
+	 position:absolute;
+     width:800px;
+     background:grey;
+     border-radius: 5px;
+     margin: 10px 0px 0px 250px;
+     font-family: fantasy;
+}
+#title{
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+#form{
+	padding: 5px;
+	margin: 20px;
+	width: 760px;
+	background-color: rgb(178, 208, 247);
+	border-radius: 5px;
+}
+textarea,input,button{
+	border-radius: 2px;
+	width: 200px;
+}
+textarea{
+	height: 50px;
+}
+label{
+	margin-right: 5px;
+}
+
+
