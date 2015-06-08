@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firstname: MyText
+  lastname: MyText
+  telephone: MyText
+  email: MyText
+  carmodel: MyText
+  carnumber: MyText
+  indate: 
+  outdate: 
+  operation1: MyText
+  operation_1_amount: MyText
+  operation2: MyText
+  operation_2_amount: MyText
+  operation3: MyText
+  operation_3_amount: MyText
+  operation4: MyText
+  operation_4_amount: MyText
+  operation5: MyText
+  operation_5_amount: MyText
+  total: MyText
+
+two:
+  firstname: MyText
+  lastname: MyText
+  telephone: MyText
+  email: MyText
+  carmodel: MyText
+  carnumber: MyText
+  indate: 
+  outdate: 
+  operation1: MyText
+  operation_1_amount: MyText
+  operation2: MyText
+  operation_2_amount: MyText
+  operation3: MyText
+  operation_3_amount: MyText
+  operation4: MyText
+  operation_4_amount: MyText
+  operation5: MyText
+  operation_5_amount: MyText
+  total: MyText

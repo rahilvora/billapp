@@ -23,7 +23,7 @@
 				</ul>
 			</div>
 			<% end %>
-			<%= form_for :bill, url:bills_path  do |f| %>
+			<%= form_for :bill, url:bill_path(@bill), method: :patch  do |f| %>
 
 			
 			<p>

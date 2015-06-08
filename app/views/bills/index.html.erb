@@ -1,6 +1,62 @@
 <html>
-
+<head>
+	<style>
+	body{
+		font-size: 14px;
+	}
+	table,tr,td,th{
+		border: 1px solid black;
+		text-align: center;
+	}
+	</style>
+</head>
 <h1>Welcome</h1>
+<%if user_signed_in?%>
+<P>Signed in as <%= current_user.email%><%= link_to'Sign Out',destroy_user_session_path, method: :delete%></P>
+<%end%>
 <%= link_to 'Add New Bill', new_bill_path %>
 
+<div id="table">
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Telephone</th>
+			<th>Email</th>
+			<th>Car Model</th>
+			<th>Car Number</th>
+			<th>In-Date</th>
+			<th>Out-Date</th>
+			<th>Bill Status</th>
+			
+		</tr>
+		<% @bills.each do |b| %>
+		<tr>
+			<td><%= b.id%></td>
+			<td><%= b.firstname %></td>
+			<td><%= b.lastname %></td>
+			<td><%= b.telephone %></td>
+			<td><%= b.email %></td>
+			<td><%= b.carmodel %></td>
+			<td><%= b.carnumber %></td>
+			<td><%= b.indate %></td>
+			<td><%= b.outdate %></td>
+			<%if b.status==false
+				@str="Pending"
+			else
+				@str="Paid"
+			end
+			%>
+			<td><%= @str %></td>
+			<td><%= link_to 'Show', bill_path(b)%></td>
+			<td><%= link_to 'edit', edit_bill_path(b)%></td>
+			<td><%= link_to 'Delete', bill_path(b), method: :delete, data:{confirm: 'are you sure'}%></td>
+			<td><%= link_to 'Mark this bill as paid'%></td>
+			<td><%= link_to 'Send Email'%></td>
+
+		</tr>
+		<% end %>
+	</table>
+</div>
 </html>

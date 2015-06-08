@@ -1,6 +1,19 @@
 <html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/assets/stylesheets/welcomeHome.css">
+	</head>
 <body>
-<h1>Hello, Rails!</h1>
-<%= link_to 'Bill Generator', controller: 'bills' %>
+<div id='login'>
+<h2>Welcome to Kismat Garage Billing Application</h2>
+<div id="buttons">
+<%if user_signed_in?%>
+Signed in as <%= current_user%><%= link_to'Sign Out',destroy_user_session_path, method: :delete%>
+<%else%>
+<%= link_to 'Sign Up',new_user_registration_path%> or <%= link_to'Sign In',user_session_path%>
+<%end%>
+<br>
+</div>
+
+</div>
 </body>
 </html>

@@ -1,0 +1,15 @@
+body{
+	font-family: Century Gothic;
+	background-color: mediumspringgreen;
+}
+#login{
+	padding: 5px;
+	width: 540px;
+	border-radius: 5px;
+	margin: 200px 0px 0px 400px;
+	
+}
+#buttons{
+	text-align: center;
+	color: black;
+}

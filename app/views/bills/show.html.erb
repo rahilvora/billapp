@@ -1,0 +1,59 @@
+<html>
+<style>
+table,tr,td,th{
+	border: 1px solid black;
+	text-align: center;
+}
+</style>
+<body>
+	<h1>Bill Saved</h1>
+	<table>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Telephone</th>
+			<th>Email</th>
+			<th>Car Model</th>
+			<th>Car Number</th>
+			<th>In-Date</th>
+			<th>Out-Date</th>
+			<th>Operation 1</th>
+			<th>Operation1 Amount</th>
+			<th>Operation 2</th>
+			<th>Operation2 Amount</th>
+			<th>Operation 3</th>
+			<th>Operation3 Amount</th>
+			<th>Operation 4</th>
+			<th>Operation4 Amount</th>
+			<th>Operation 5</th>
+			<th>Operation5 Amount</th>
+			<th>Total</th>
+		</tr>
+		<tr>
+			<td><%= @bill.firstname%></td>
+			<td><%= @bill.lastname %></td>
+			<td><%= @bill.telephone %></td>
+			<td><%= @bill.email %></td>
+			<td><%= @bill.carmodel %></td>
+			<td><%= @bill.carnumber %></td>
+			<td><%= @bill.indate %></td>
+			<td><%= @bill.outdate %></td>
+			<td><%= @bill.operation1 %></td>
+			<td><%= @bill.operation_1_amount %></td>
+			<td><%= @bill.operation2 %></td>
+			<td><%= @bill.operation_2_amount %></td>
+			<td><%= @bill.operation3 %></td>
+			<td><%= @bill.operation_3_amount %></td>
+			<td><%= @bill.operation4 %></td>
+			<td><%= @bill.operation_4_amount %></td>
+			<td><%= @bill.operation5 %></td>
+			<td><%= @bill.operation_5_amount %></td>
+			<td><%= @bill.total %></td>
+		</tr>
+		
+	</table>
+	<p>
+		<%= link_to 'Back', bills_path%>
+	</p>
+</body>
+</html>
