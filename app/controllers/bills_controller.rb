@@ -37,6 +37,12 @@ class BillsController < ApplicationController
   def edit
     @bill= Bill.find(params[:id])
   end
+  def updateBillStatus
+    @bill=Bill.find(params[:id])
+    @bill.update_attribute(:status,1)
+    @bill.save
+    redirect_to bills_path
+  end
   private
   def bill_params
     params.require(:bill).permit(:firstname, :lastname, :telephone, :email, :carmodel, :carnumber, :indate, :outdate, :operation1,

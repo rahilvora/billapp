@@ -27,6 +27,8 @@ table,tr,td,th{
 			<th>Operation4 Amount</th>
 			<th>Operation 5</th>
 			<th>Operation5 Amount</th>
+			<th>Bill Status</th>
+
 			<th>Total</th>
 		</tr>
 		<tr>
@@ -48,6 +50,13 @@ table,tr,td,th{
 			<td><%= @bill.operation_4_amount %></td>
 			<td><%= @bill.operation5 %></td>
 			<td><%= @bill.operation_5_amount %></td>
+			<%if @bill.status==false
+				@str="Pending"
+			else
+				@str="Paid"
+			end
+			%>
+			<td><%= @str%></td>
 			<td><%= @bill.total %></td>
 		</tr>
 		

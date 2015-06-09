@@ -2,10 +2,10 @@
 #main{
 	 position:absolute;
      width:800px;
-     background:grey;
      border-radius: 5px;
+     background-color: beige;
      margin: 10px 0px 0px 250px;
-     font-family: fantasy;
+    
 }
 #title{
 	text-align: center;
@@ -15,7 +15,7 @@
 	padding: 5px;
 	margin: 20px;
 	width: 760px;
-	background-color: rgb(178, 208, 247);
+	background-color: skyblue;
 	border-radius: 5px;
 }
 textarea,input,button{

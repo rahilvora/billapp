@@ -13,3 +13,7 @@ body{
 	text-align: center;
 	color: black;
 }
+#displaye,tr,td,th{
+		border: 1px solid black;
+		text-align: center;
+	}
