@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :bills do
     member do
       get 'updateBillStatus'
+      get 'sendBillEmail'
     end
   end
   # You can have the root of your site routed with "root"

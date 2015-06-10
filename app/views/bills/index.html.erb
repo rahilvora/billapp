@@ -10,7 +10,7 @@
 <%if user_signed_in?%>
 <P>Signed in as <%= current_user.email%><%= link_to'Sign Out',destroy_user_session_path, method: :delete%></P>
 <%end%>
-<%= link_to 'Add New Bill', new_bill_path %>
+<%= link_to 'Add New Bill', new_bill_path %><%= @send%>
 
 <div id="table">
 	<table id="display">
@@ -49,7 +49,7 @@
 			<td><%= link_to 'edit', edit_bill_path(b)%></td>
 			<td><%= link_to 'Delete', bill_path(b), method: :delete, data:{confirm: 'are you sure'}%></td>
 			<td class="btn"><%= button_to 'Mark Paid', updateBillStatus_bill_path(b), method: :get%></td>
-			<td class="btn"><%= link_to 'Send Email'%></td>
+			<td class="btn"><%= button_to 'Send Email', sendBillEmail_bill_path(b),method: :get%></td>
 
 		</tr>
 		<% end %>

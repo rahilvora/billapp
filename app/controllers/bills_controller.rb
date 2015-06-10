@@ -43,6 +43,12 @@ class BillsController < ApplicationController
     @bill.save
     redirect_to bills_path
   end
+  def sendBillEmail
+    @bill=Bill.find(params[:id])
+    UserMailer.sendBillEmail(@bill).deliver
+ 
+    redirect_to bills_path
+  end
   private
   def bill_params
     params.require(:bill).permit(:firstname, :lastname, :telephone, :email, :carmodel, :carnumber, :indate, :outdate, :operation1,

@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
-	def email(user)
-	@user = user
-    @url  = 'localhost:3001/bills'
-    mail(to: @user.email, subject: 'Please find your bill receipt')
+	default_url_options[:host] = "localhost:3001"
+	default from: ""
+	def sendBillEmail(user)
+    mail(to: user.email, subject: 'Please find your bill receipt')
 	end
 end
