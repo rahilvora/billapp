@@ -9,12 +9,4 @@ ActionMailer::Base.smtp_settings = {
   :password             => "",
   :authentication       => "plain",
   :enable_starttls_auto => true
-  :openssl_verify_mode => 'none'
 }
-#ctkulirfvagnomll
-=begin
-ActionMailer::Base.perform_deliveries = true 
-ActionMailer::Base.raise_delivery_errors = true 
-ActionMailer::Base.default :charset => "utf-8"
-ActionMailer::Base.default :content_type => "text/html"
-ActionMailer::Base.default_url_options[:host] = "localhost:3001"

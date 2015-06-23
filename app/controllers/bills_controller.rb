@@ -1,7 +1,13 @@
 class BillsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @bills=Bill.all
+    #search=Bill.ransack(params[])
+    #bills = Bill.all.order(:indate)
+    #billsYears = bills.group_by{ |b| b.indate.beginning_of_year}
+     @search=Bill.ransack(params[:q])
+     bYears=@search.result
+     @billsYears=bYears.order(:indate).group_by{|b| b.indate.beginning_of_year}
+
   end
   def new
     @bill=Bill.new

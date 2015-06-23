@@ -1,58 +1,55 @@
-<html>
-<head>
-	<style type="text/css">
-		.btn{
-			width: 5px;
-		}
-	</style>
-</head>
-<h1>Kismat Garage Billing Application</h1>
-<%if user_signed_in?%>
-<P>Signed in as <%= current_user.email%><%= link_to'Sign Out',destroy_user_session_path, method: :delete%></P>
-<%end%>
-<%= link_to 'Add New Bill', new_bill_path %><%= @send%>
 
-<div id="table">
-	<table id="display">
-		<tr>
-			<th>ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Telephone</th>
-			<th>Email</th>
-			<th>Car Model</th>
-			<th>Car Number</th>
-			<th>In-Date</th>
-			<th>Out-Date</th>
-			<th>Bill Status</th>
-			
-		</tr>
-		<% @bills.each do |b| %>
-		<tr>
-			<td><%= b.id%></td>
-			<td><%= b.firstname %></td>
-			<td><%= b.lastname %></td>
-			<td><%= b.telephone %></td>
-			<td><%= b.email %></td>
-			<td><%= b.carmodel %></td>
-			<td><%= b.carnumber %></td>
-			<td><%= b.indate %></td>
-			<td><%= b.outdate %></td>
-			<%if b.status==false
-				@str="Pending"
-			else
-				@str="Paid"
-			end
-			%>
-			<td><%= @str %></td>
-			<td><%= link_to 'Show', bill_path(b)%></td>
-			<td><%= link_to 'edit', edit_bill_path(b)%></td>
-			<td><%= link_to 'Delete', bill_path(b), method: :delete, data:{confirm: 'are you sure'}%></td>
-			<td class="btn"><%= button_to 'Mark Paid', updateBillStatus_bill_path(b), method: :get%></td>
-			<td class="btn"><%= button_to 'Send Email', sendBillEmail_bill_path(b),method: :get%></td>
-
-		</tr>
-		<% end %>
-	</table>
+	<h1>Kismat Garage Billing Application</h1>
+	<%if user_signed_in?%>
+	<P>Signed in as <%= current_user.email%><%= link_to'Sign Out',destroy_user_session_path, method: :delete%></P>
+	<%end%>
+	<%= link_to 'Add New Bill', new_bill_path %><%= @send%>
+	
+	<%= search_form_for @search, url: search_bills_path, method: :post do |f|%>
+	
+			<%= f.label :firstname_cont,"First Name Contains"%>
+			<%= f.text_field :firstname_cont %>
+			<%= f.label :lastname_cont,"Last Name Contains"%>
+			<%= f.text_field :lastname_cont %>
+			<%= f.submit "Search", id:"search"%>
+		
+	<%end%>
+	<%= render plain: @billsYears.inspect%>
+	<% @billsYears.sort.each do |year, bills| %>
+		<h2> <%= year.strftime("%Y") %> </h2>
+		<%- monthlyBills = bills.group_by { |b| b.indate.beginning_of_month} %>
+		<% monthlyBills.sort.each do |month, bills| %>
+			<h2> <%= month.strftime("%B") %> </h2>
+			<div id="table">
+				<table id="display">
+					<%= render 'tHeading'%>
+					<% for bill in bills %>
+						<tr>
+							<td><%= bill.id%></td>
+							<td><%= bill.firstname %></td>
+							<td><%= bill.lastname %></td>
+							<td><%= bill.telephone %></td>
+							<td><%= bill.email %></td>
+							<td><%= bill.carmodel %></td>
+							<td><%= bill.carnumber %></td>
+							<td><%= bill.indate %></td>
+							<td><%= bill.outdate %></td>
+							<%if bill.status==false
+								@str="Pending"
+							else
+								@str="Paid"
+							end
+							%>
+							<td><%= @str %></td>
+							<td><%= link_to 'Show', bill_path(bill)%></td>
+							<td><%= link_to 'edit', edit_bill_path(bill)%></td>
+							<td><%= link_to 'Delete', bill_path(bill), method: :delete, data:{confirm: 'are you sure'}%></td>
+							<td class="btn"><%= button_to 'Mark Paid', updateBillStatus_bill_path(bill), method: :get,id: "markpaid"%></td>
+							<td class="btn"><%= button_to 'Send Email', sendBillEmail_bill_path(bill),method: :get,id: "sendemail"%></td>
+						</tr>
+					<% end -%>
+				</table>
+			</div>
+		<% end -%>
+	<%end%>
 </div>
-</html>

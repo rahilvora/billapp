@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'updateBillStatus'
       get 'sendBillEmail'
     end
+    collection { post :search, to: "bills#index"}
   end
   # You can have the root of your site routed with "root"
   root 'welcome#index'

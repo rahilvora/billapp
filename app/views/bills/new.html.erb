@@ -1,105 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="/assets/stylesheets/form.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/assets/javascript/calculate.js"></script>
 </head>
 <body>
-	<div id="main">
-		<p id="title">Add Bill</p>
+	<div id="container-fluid" >
+		<div id="main">
+			<p id="title">Add Bill</p>
+			<div id="form">
+				<% if @bill.errors.any? %>
+				<div id="error_explanation">
+					<h2>
+						<%= pluralize(@bill.errors.count, "error") %> prohibited
+						this bill from being saved:
+					</h2>
+					<ul>
+						<% @bill.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+				<%= form_for :bill, url:bills_path  do |f| %>
 
-		<div id="form">
-			<% if @bill.errors.any? %>
-			<div id="error_explanation">
-				<h2>
-					<%= pluralize(@bill.errors.count, "error") %> prohibited
-					this bill from being saved:
-				</h2>
-				<ul>
-					<% @bill.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-					<% end %>
-				</ul>
+				
+				<p>
+					<%= f.label :firstname %><br>
+					<%= f.text_field :firstname %>
+				</p>
+				<p>
+					<%= f.label :lastname %><br>
+					<%= f.text_field :lastname %>
+				</p>
+				<p>
+					<%= f.label :telephone %><br>
+					<%= f.telephone_field :telephone %>
+				</p>
+				<p>
+					<%= f.label :email %><br>
+					<%= f.email_field :email %>
+				</p>
+				<p>
+					<%= f.label :carmodel %><br>
+					<%= f.text_field :carmodel %>
+				</p>
+				<p>
+					<%= f.label :carnumber %><br>
+					<%= f.text_field :carnumber %>
+				</p>
+				<p>
+					<%= f.label :indate %><br>
+					<%= f.date_field :indate %>
+				</p>
+				<p>
+					<%= f.label :outdate %><br>
+					<%= f.date_field :outdate %>
+				</p>
+				<p>
+					<%= f.label :operation1 %><br>
+					<%= f.text_area :operation1 %><br>
+					<%= f.label :operation_1_Amount %><br>
+					<%= f.number_field :operation_1_amount %>
+				</p>
+				<p>
+					<%= f.label :operation2 %><br>
+					<%= f.text_area :operation2 %><br>
+					<%= f.label :operation_2_Amount %><br>
+					<%= f.number_field :operation_2_amount %>
+				</p>
+				<p>
+					<%= f.label :operation3 %><br>
+					<%= f.text_area :operation3 %><br>
+					<%= f.label :operation_3_Amount %><br>
+					<%= f.number_field :operation_3_amount %>
+				</p>
+				<p>
+					<%= f.label :operation4 %><br>
+					<%= f.text_area :operation4 %><br>
+					<%= f.label :operation_4_Amount %><br>
+					<%= f.number_field :operation_4_amount %>
+				</p>
+				<p>
+					<%= f.label :operation5 %><br>
+					<%= f.text_area :operation5 %><br>
+					<%= f.label :operation_5_Amount %><br>
+					<%= f.number_field :operation_5_amount %>
+				</p>
+				<p>
+					<%= f.label :total %><%= f.text_field :total %>
+				</p>
+				
+				<p>
+					<%= submit_tag "Calculate Bill!", :type => 'button', :onclick => "cal();" %><%= f.submit %>
+				</p>
+
+
+				<% end %>
+
 			</div>
-			<% end %>
-			<%= form_for :bill, url:bills_path  do |f| %>
-
-			
-			<p>
-				<%= f.label :firstname %><br>
-				<%= f.text_field :firstname %>
-			</p>
-			<p>
-				<%= f.label :lastname %><br>
-				<%= f.text_field :lastname %>
-			</p>
-			<p>
-				<%= f.label :telephone %><br>
-				<%= f.telephone_field :telephone %>
-			</p>
-			<p>
-				<%= f.label :email %><br>
-				<%= f.email_field :email %>
-			</p>
-			<p>
-				<%= f.label :carmodel %><br>
-				<%= f.text_field :carmodel %>
-			</p>
-			<p>
-				<%= f.label :carnumber %><br>
-				<%= f.text_field :carnumber %>
-			</p>
-			<p>
-				<%= f.label :indate %><br>
-				<%= f.date_field :indate %>
-			</p>
-			<p>
-				<%= f.label :outdate %><br>
-				<%= f.date_field :outdate %>
-			</p>
-			<p>
-				<%= f.label :operation1 %><br>
-				<%= f.text_area :operation1 %><br>
-				<%= f.label :operation_1_Amount %><br>
-				<%= f.number_field :operation_1_amount %>
-			</p>
-			<p>
-				<%= f.label :operation2 %><br>
-				<%= f.text_area :operation2 %><br>
-				<%= f.label :operation_2_Amount %><br>
-				<%= f.number_field :operation_2_amount %>
-			</p>
-			<p>
-				<%= f.label :operation3 %><br>
-				<%= f.text_area :operation3 %><br>
-				<%= f.label :operation_3_Amount %><br>
-				<%= f.number_field :operation_3_amount %>
-			</p>
-			<p>
-				<%= f.label :operation4 %><br>
-				<%= f.text_area :operation4 %><br>
-				<%= f.label :operation_4_Amount %><br>
-				<%= f.number_field :operation_4_amount %>
-			</p>
-			<p>
-				<%= f.label :operation5 %><br>
-				<%= f.text_area :operation5 %><br>
-				<%= f.label :operation_5_Amount %><br>
-				<%= f.number_field :operation_5_amount %>
-			</p>
-			<p>
-				<%= f.label :total %><%= f.text_field :total %>
-			</p>
-			
-			<p>
-				<%= submit_tag "Calculate Bill!", :type => 'button', :onclick => "cal();" %><%= f.submit %>
-			</p>
-
-
-			<% end %>
-
 		</div>
-	</div>
-	
+	</div>	
 </body>

@@ -7,8 +7,8 @@ class CreateBills < ActiveRecord::Migration
       t.text :email
       t.text :carmodel
       t.text :carnumber
-      t.text :indate
-      t.text :outdate
+      t.datetime :indate
+      t.datetime :outdate
       t.text :operation1
       t.text :operation_1_amount
       t.text :operation2

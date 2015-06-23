@@ -1,19 +1,19 @@
 body{
 	font-family: Century Gothic;
 	background-color: mediumspringgreen;
+	font-size: 14px;
 }
 #login{
 	padding: 5px;
 	width: 540px;
 	border-radius: 5px;
 	margin: 200px 0px 0px 400px;
-	
 }
-#buttons{
-	text-align: center;
-	color: black;
-}
-#displaye,tr,td,th{
+
+#display,tr,td,th{
 		border: 1px solid black;
 		text-align: center;
 	}
+#markpaid,#sendemail,#search{
+	width: 80px;
+}

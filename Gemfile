@@ -24,8 +24,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml', '~> 4.0.5'
 gem "haml-rails", "~> 0.9"
+#login Gem
 gem 'devise'
 gem "mail", "2.6.3"
+
+#search Gem
+gem 'ransack'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
